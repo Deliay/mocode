@@ -34,7 +34,7 @@
             {
                 "command": "extension.formatStylus",
                 "category": "Moka",
-                "title": "Format selection stylus code style"
+                "title": "Format selection stylus"
             }
         ]
     },
