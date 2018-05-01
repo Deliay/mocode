@@ -1,4 +1,7 @@
 # Moka More Code
+
+![MokaIcon](icon.png)
+
 A vscode plugin for moka developers
 
 ## Features
