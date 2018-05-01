@@ -1,6 +1,6 @@
 'use strict';
 import * as vscode from 'vscode';
-import { PaletteContoller } from './paletteController';
+import { PaletteContoller } from './palette/paletteController';
 
 export function activate(context: vscode.ExtensionContext) {
     const paletteController = new PaletteContoller(context.subscriptions);

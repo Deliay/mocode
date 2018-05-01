@@ -122,6 +122,10 @@ let isLoadPalettes = true;
 const Palettes : Map<string, string> = new Map<string, string>();
 const Settelap : Map<string, Palette[]> = new Map<string, Palette[]>();
 
+export function getColorDefineByKey(key: string) {
+    return Palettes.get(key);
+}
+
 function parsePalette(uri: vscode.Uri) {
     // parse规则
     // 键值对       ^(terminal symbols)key=value
@@ -175,7 +179,7 @@ function pickKeyValue(texts: string) {
 }
 
 // 针对变量嵌套变量的情况
-function findRealValue(value: string) {
+function findRealValue(value: string) : string {
     const valueAskey = Palettes.get(value);
 
     if(valueAskey) { 

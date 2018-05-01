@@ -1,9 +1,10 @@
 import * as vscode from 'vscode';
 import * as paletteServices from './paletteServices';
+import { PaletteHover } from './paletteHover';
 
 export class PaletteContoller {
 
-    private disposable_replace = vscode.commands.registerCommand('extension.findMokaUIColor', () => {
+    private replace = vscode.commands.registerCommand('extension.findMokaUIColor', () => {
         if (paletteServices.getIsLoadPalettes()) {
             vscode.window.showErrorMessage("Palette was not loaded, please try agin later");
             return;
@@ -11,21 +12,31 @@ export class PaletteContoller {
         paletteServices.replaceValue();
     });
     
-    private disposable_parseMokaUIPalette = vscode.commands.registerCommand('extension.parseMokaUIPalette', () => {
+    private parseMokaUIPalette = vscode.commands.registerCommand('extension.parseMokaUIPalette', () => {
         paletteServices.cleanAndReParse(vscode.window.activeTextEditor.document.getText());
     });
     
-    private disposable_reload = vscode.commands.registerCommand('extension.reloadPalette', () => {
+    private reload = vscode.commands.registerCommand('extension.reloadPalette', () => {
         paletteServices.cleanAndReParse();
     });
     
     ///palette.styl
     //when change workspace auto parse the palette.styl
-    private disposable_initial = vscode.workspace.onDidChangeWorkspaceFolders((ev) => {
+    private initial = vscode.workspace.onDidChangeWorkspaceFolders((ev) => {
         paletteServices.cleanAndReParse();
     });
+
+    private STYLUS_FILES : vscode.DocumentFilter = { pattern: "**/*.styl" };
+
+    private documentHover = vscode.languages.registerHoverProvider(this.STYLUS_FILES, new PaletteHover());
     
-    private paletteContollers = [ this.disposable_replace, this.disposable_parseMokaUIPalette, this.disposable_reload, this.disposable_initial];
+    private paletteContollers = [ 
+        this.replace, 
+        this.parseMokaUIPalette, 
+        this.reload, 
+        this.initial,
+        this.documentHover,
+    ];
 
     constructor(contents: { dispose(): any }[]) {
         paletteServices.cleanAndReParse();
