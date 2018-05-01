@@ -2,8 +2,10 @@
     "name": "mocode",
     "displayName": "Moka More Code",
     "description": "(For Moka developers only)",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "publisher": "Deliay",
+    "license": "MIT",
+    "icon": "icon.png",
     "engines": {
         "vscode": "^1.22.0"
     },
