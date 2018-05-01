@@ -1,6 +1,8 @@
 import * as vscode from 'vscode';
 import * as paletteServices from './paletteServices';
 import { PaletteHover } from './paletteHover';
+import { STYLUS_FILES } from '../public/constant';
+import { PaletteCompletion } from './paletteCompletion';
 
 export class PaletteContoller {
 
@@ -26,9 +28,9 @@ export class PaletteContoller {
         paletteServices.cleanAndReParse();
     });
 
-    private STYLUS_FILES : vscode.DocumentFilter = { pattern: "**/*.styl" };
+    private documentHover = vscode.languages.registerHoverProvider(STYLUS_FILES, new PaletteHover());
 
-    private documentHover = vscode.languages.registerHoverProvider(this.STYLUS_FILES, new PaletteHover());
+    private documentCompletion = vscode.languages.registerCompletionItemProvider(STYLUS_FILES, new PaletteCompletion(), "#");
     
     private paletteContollers = [ 
         this.replace, 
@@ -36,6 +38,7 @@ export class PaletteContoller {
         this.reload, 
         this.initial,
         this.documentHover,
+        this.documentCompletion,
     ];
 
     constructor(contents: { dispose(): any }[]) {

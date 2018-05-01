@@ -1,5 +1,6 @@
 
 import * as vscode from 'vscode';
+import { PaletteCompletionItemManager } from './paletteCompletion';
 
 /**
  * [导出] 替换光标或选中的文本为指定颜色define
@@ -119,8 +120,8 @@ export function getIsLoadPalettes() : boolean {
 }
 
 let isLoadPalettes = true;
-const Palettes : Map<string, string> = new Map<string, string>();
-const Settelap : Map<string, Palette[]> = new Map<string, Palette[]>();
+export const Palettes : Map<string, string> = new Map<string, string>();
+export const Settelap : Map<string, Palette[]> = new Map<string, Palette[]>();
 
 export function getColorDefineByKey(key: string) {
     return Palettes.get(key);
@@ -176,10 +177,12 @@ function pickKeyValue(texts: string) {
             }
         }
     });
+
+    PaletteCompletionItemManager.Instance.RefreshCompletion();
 }
 
 // 针对变量嵌套变量的情况
-function findRealValue(value: string) : string {
+export function findRealValue(value: string) : string {
     const valueAskey = Palettes.get(value);
 
     if(valueAskey) { 
