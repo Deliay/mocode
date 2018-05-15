@@ -6,8 +6,8 @@ A vscode plugin for moka developers
 
 ## Features
 
-1. Support moka-ui color define Code Complete and replace
-2. Support format `k: v;` style to `k v` style
+1. Support moka-ui style color auto complete and replace
+2. Support format `k: v;` css style to moka `k v` style
 
 ## Requirements
 For more stable, install [language-stylus](https://marketplace.visualstudio.com/items?itemName=sysoev.language-stylus) well
