@@ -2,7 +2,7 @@
     "name": "mocode",
     "displayName": "Moka More Code",
     "description": "(For Moka developers only)",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "publisher": "Deliay",
     "license": "MIT",
     "icon": "icon.png",
@@ -41,8 +41,93 @@
                 "command": "extension.formatStylus",
                 "category": "Moka",
                 "title": "Format selection stylus"
+            },
+            {
+                "command": "extension.mokaJenkinsStatus",
+                "category": "Moka",
+                "title": "Refresh Jenkins Status"
+            },
+            {
+                "command": "extension.mokaJenkinsBuild",
+                "category": "Moka",
+                "title": "Build using current settings"
+            },
+            {
+                "command": "extension.mokaJenkinsStopBuild",
+                "category": "Moka",
+                "title": "Stop the builing on current pipeline"
+            },
+            {
+                "command": "extension.mokaJenkinsCancelQueue",
+                "category": "Moka",
+                "title": "Cancel your queued tasks in all pipeline"
+            },
+            {
+                "command": "extension.mokaJenkinsBranch",
+                "category": "Moka",
+                "title": "Select the branch you want to build"
+            },
+            {
+                "command": "extension.mokaJenkinsPipeline",
+                "category": "Moka",
+                "title": "Select the pipeline you want to use"
+            },
+            {
+                "command": "extension.mokaJenkinsStaging",
+                "category": "Moka",
+                "title": "Select the staging you want build to"
+            },
+            {
+                "command": "extension.refreshConnector",
+                "category": "Moka",
+                "title": "Refresh current branch pull request"
+            },
+            {
+                "command": "extension.openPullReuqest",
+                "category": "Moka",
+                "title": "Open github pull request"
+            },
+            {
+                "command": "extension.openJIRA",
+                "category": "Moka",
+                "title": "Oepn JIRA"
             }
-        ]
+        ],
+        "configuration": {
+            "title": "Moka Jenkins Settings",
+            "properties": {
+                "moka.jenkins.userName": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Specify the user of moka's jenkins(Leave empty for use cookie)"
+                },
+                "moka.jenkins.password": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Login password or cookie"
+                },
+                "moka.jenkins.autoRefresh": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Auto refresh current jenkins infomation"
+                },
+                "moka.jenkins.refreshInterval": {
+                    "type": "number",
+                    "default": 5,
+                    "description": "Auto refresh interval (default 5s, min 2s)"
+                },
+                "moka.jenkins.toolAlias": {
+                    "type": "string",
+                    "default": "jk",
+                    "description": "Specify the moka jenkins tool you want to use"
+                },
+                "moka.connector.cookie": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Github cookie for catch prid from github tree"
+                }
+            }
+        }
     },
     "scripts": {
         "vscode:prepublish": "npm run compile",

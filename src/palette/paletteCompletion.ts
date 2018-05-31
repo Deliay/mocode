@@ -2,7 +2,7 @@ import * as vscode from "vscode";
 import * as paletteServices from "./paletteServices";
 
 export class PaletteCompletionItemManager {
-    public static Instance : PaletteCompletionItemManager = new PaletteCompletionItemManager();
+    public static readonly Instance : PaletteCompletionItemManager = new PaletteCompletionItemManager();
     private constructor() {
 
     }

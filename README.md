@@ -13,10 +13,11 @@ A vscode plugin for moka developers
 For more stable, install [language-stylus](https://marketplace.visualstudio.com/items?itemName=sysoev.language-stylus) well
 
 ## Release Notes
-### 1.0.0
+### 0.0.1~0.0.3
 Initial release.
 
-
+### 0.0.4
+Support get current branch infomation about devs
 -----------------------------------------------------------------------------------------------------------
 
 ## Commands
